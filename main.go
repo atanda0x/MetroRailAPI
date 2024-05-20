@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/atanda0x/e-commerce/routes"
@@ -18,4 +19,11 @@ func main() {
 
 	routes.UserRoutes(router)
 	router.Use()
+
+	router.GET("/addToCart")
+	router.GET("/removeItem")
+	router.GET("/cartCheckout")
+	router.GET("/instantBuy")
+
+	log.Fatal(router.Run(":", port))
 }
