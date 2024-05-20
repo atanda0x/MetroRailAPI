@@ -7,56 +7,56 @@ import (
 )
 
 type User struct {
-	ID              uuid.UUID
-	First_Name      *string
-	Last_Name       *string
-	Password        *string
-	Email           *string
-	Phone           *string
-	Token           *string
-	Refresh_Token   *string
-	User_ID         string
-	UserCart        []ProductUser
-	Address_Details []Address
-	Order_Status    []Order
-	CreatedAt       time.Time
-	UpdatedAt       time.Time
+	ID              uuid.UUID     `json:"id"`
+	First_Name      *string       `json:"first_name" validate:"required,min=2,max=30"`
+	Last_Name       *string       `json:"last_name" validate:"required,min=2,max=30"`
+	Password        *string       `json:"passwrd" validate:"required,min=6"`
+	Email           *string       `json:"emil" validate:"email, required"`
+	Phone           *string       `json:"phone" validate:"required"`
+	Token           *string       `json:"token"`
+	Refresh_Token   *string       `json:"refresh_token"`
+	User_ID         string        `json:"user_id"`
+	UserCart        []ProductUser `json:"user_cart"`
+	Address_Details []Address     `json:"address_details"`
+	Order_Status    []Order       `json:"order_status"`
+	CreatedAt       time.Time     `json:"created_at"`
+	UpdatedAt       time.Time     `json:"update_at"`
 }
 
 type Product struct {
-	Product_ID   uuid.UUID
-	Product_Name *string
-	Price        *uint64
-	Rating       *uint8
-	Image        *string
+	Product_ID   uuid.UUID `json:"id"`
+	Product_Name *string   `json:"product_name"`
+	Price        *uint64   `json:"price"`
+	Rating       *uint8    `json:"rating"`
+	Image        *string   `json:"image"`
 }
 
 type ProductUser struct {
-	Product_ID   uuid.UUID
-	Product_Name *string
-	Price        *uint64
-	Rating       *uint8
-	Image        *string
+	Product_ID   uuid.UUID `json:"id"`
+	Product_Name *string   `json:"product_name"`
+	Price        *uint64   `json:"price"`
+	Rating       *uint8    `json:"rating"`
+	Image        *string   `json:"image"`
 }
 
 type Address struct {
-	Address_ID uuid.UUID
-	House      *string
-	Street     *string
-	City       *string
-	Pincode    *string
+	Address_ID uuid.UUID `json:"id"`
+	House      *string   `json:"house"`
+	Street     *string   `json:"street"`
+	City       *string   `json:"city"`
+	Pincode    *string   `json:"pin_code"`
 }
 
 type Order struct {
-	Order_ID       uuid.UUID
-	Order_Cart     []ProductUser
-	Order_At       time.Time
-	Price          int
-	Discount       int
-	Payment_Method Payment
+	Order_ID       uuid.UUID     `json:"id"`
+	Order_Cart     []ProductUser `json:"order_cart"`
+	Order_At       time.Time     `json:"order_at"`
+	Price          int           `json:"price"`
+	Discount       int           `json:"discount"`
+	Payment_Method Payment       `json:"payment_method"`
 }
 
 type Payment struct {
-	Digital bool
-	COD     bool
+	Digital bool `json:"digital"`
+	COD     bool `json:"cod"`
 }
