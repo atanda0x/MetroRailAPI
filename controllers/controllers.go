@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"net/http"
 	"time"
 
 	"github.com/atanda0x/e-commerce/models"
@@ -23,8 +24,17 @@ func Signup() gin.HandlerFunc {
 
 		var user models.User
 		if err := ctx.BindJSON(&user); err != nil {
-
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
 		}
+
+		validationErr := validate.Struct(user)
+		if validationErr != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": validationErr})
+			return
+		}
+
+		count, err := userCollection.CountDoument(ctx, json.)
 	}
 }
 
