@@ -9,6 +9,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var DB *sql.DB
+
 func DBset() *sql.DB {
 	config, err := util.LoadConfig(".")
 	if err != nil {

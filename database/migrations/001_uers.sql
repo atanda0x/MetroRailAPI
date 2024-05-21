@@ -9,6 +9,9 @@ CREATE TABLE users (
     token VARCHAR(225),
     refresh_token VARCHAR(225),
     user_id VARCHAR(225) NOT NULL,
+    user_cart JSONB,
+    address_details JSONB,
+    order_status JSONB,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

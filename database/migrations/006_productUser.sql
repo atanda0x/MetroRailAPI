@@ -1,5 +1,5 @@
 -- +goose Up
-CREATE TABLE products (
+CREATE TABLE productUser (
     id UUID PRIMARY KEY,
     productName VARCHAR(225) NOT NULL,
     price BIGINT NOT NULL,
@@ -8,4 +8,4 @@ CREATE TABLE products (
 );
 
 -- +goose Down
-DROP TABLE products;
+DROP TABLE productUser;

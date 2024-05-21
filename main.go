@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/atanda0x/e-commerce/database"
 	"github.com/atanda0x/e-commerce/routes"
 	"github.com/gin-gonic/gin"
@@ -21,6 +19,4 @@ func main() {
 	router.GET("/removeItem")
 	router.GET("/cartCheckout")
 	router.GET("/instantBuy")
-
-	log.Fatal(router.Run(":", port))
 }
