@@ -9,9 +9,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var db *sql.DB
-var Client *sql.DB = DBset()
-
 func DBset() *sql.DB {
 	config, err := util.LoadConfig(".")
 	if err != nil {
@@ -24,7 +21,7 @@ func DBset() *sql.DB {
 
 	err = db.Ping()
 	if err != nil {
-		log.Fatal("error ping db: %q", err)
+		log.Fatal(err)
 	}
 
 	fmt.Println("Successfully connected to postresql!!!!!!!!!!!!!")
